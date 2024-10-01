@@ -1,29 +1,34 @@
+import React, { useState, useEffect } from 'react';
 
-import { useState } from 'react'
 import './App.css'
 
 function App() {
-
+  const [render, setRender] = useState(true);
+  useEffect(() => {
+    setInterval(() => {
+      setRender(r => !r);
+    }, 10000)
+  }, []);
   return (
     <>
-      <MyComponent />
+      {render ? <MyComponent /> : <div></div>}
     </>
   )
 }
 
+
 function MyComponent() {
-  const [count, setCount] = useState(0);
+  useEffect(() => {
+    console.error("Component unmounted")
 
-  const increment = () => {
-    setCount(count + 1);
-  };
+    return () => {
+      console.log("Component mounted")
+    };
+  }, []);
 
-  return (
-    <div>
-      <p>{count}</p>
-      <button onClick={increment}>Increment</button>
-    </div>
-  )
+  return <div>
+    From inside MyComponent
+  </div>
 }
 
 export default App
