@@ -19,10 +19,8 @@ app.put("/user", (req, res) => {
     return;
   }
 
-  // Type of updateBody is inferred from userProfileSchema
   const updateBody = result.data;
 
-  // update database here
   res.json({
     message: "User updated",
     updateBody
