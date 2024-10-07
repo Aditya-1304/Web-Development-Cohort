@@ -2,7 +2,10 @@ const express = require("express");
 
 function calCulateSum(n) {
   let ans = 0;
-  for (i = 0; i <= n; i++) {
+  // Convert n to a number to prevent string concatenation
+  n = Number(n);
+  
+  for (let i = 0; i <= n; i++) {
     ans = ans + i;
   }
   return ans;
@@ -16,4 +19,6 @@ app.get("/", function (req, res) {
   res.send(ans.toString());
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
