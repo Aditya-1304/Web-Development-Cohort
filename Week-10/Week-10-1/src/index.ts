@@ -1,7 +1,7 @@
 import { Client } from 'pg'
- 
+import dotenv from 'dotenv';
 const client = new Client({
- connectionString:"postgresql://test_owner:TWICwZdtH31X@ep-cold-fire-a5kyrsiy.us-east-2.aws.neon.tech/test?sslmode=require"
+ connectionString:process.env.POSTGRES_URI
 })
 
 async function createUsersTable() {
@@ -19,3 +19,4 @@ async function createUsersTable() {
 }
 
 createUsersTable();
+
