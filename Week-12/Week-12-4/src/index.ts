@@ -2,7 +2,7 @@
 import { Client } from 'pg'
  
 const client = new Client({
-  connectionString: "postgresql://postgres:napaglena@localhost/postgres"
+  connectionString: process.env.POSTGRES_URI
 })
 
 async function insertUserData(username : string , email : string , password : string) {
